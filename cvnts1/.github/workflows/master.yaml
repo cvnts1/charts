@@ -1,0 +1,19 @@
+name: Push chart
+
+on:
+  push:
+    branches: [ 'master' ] 
+
+jobs:
+  pack-and-push:
+    runs-on: s0-helm
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+      - name: Package and push Helm Chart
+        run: |
+          for chart in $(ls $GITHUB_WORKSPACE)
+          do
+            helm package $GITHUB_WORKSPACE/$chart --version 0.1.$GITHUB_RUN_NUMBER
+            curl -s -u "$REGISTRY_USER:$REGISTRY_TOKEN" -X POST $CHARTMUSEUM_API_PATH -H "Content-Type: multipart/form-data" -F "chart=@$chart-0.1.$GITHUB_RUN_NUMBER.tgz;type=application/x-compressed-tar"
+          done
