@@ -1,6 +1,6 @@
 server:
   registry: harbor.lakis.eu/cvnts1/server
-  tag: 0.1.11 # {"$imagepolicy": "flux-system:server:tag"}
+  tag: 0.1.12 # {"$imagepolicy": "flux-system:server:tag"}
   health_message: "Health message from helm chart"
 ingress:
   domain: cvnts1.lakis.eu
