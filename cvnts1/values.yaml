@@ -1,15 +1,13 @@
 server:
   registry: harbor.lakis.eu/cvnts1/server
-  tag: 0.1.8 # {"$imagepolicy": "flux-system:server:tag"}
+  tag: 0.1.9 # {"$imagepolicy": "flux-system:server:tag"}
   health_message: "Health message from helm chart"
-
 ingress:
   domain: cvnts1.lakis.eu
   annotations:
     kubernetes.io/ingress.class: traefik
     traefik.ingress.kubernetes.io/router.middlewares: traefik-https-only@kubernetescrd
     traefik.ingress.kubernetes.io/router.tls: "true"
-
 certificate:
   issuerRef:
     group: cert-manager.io
