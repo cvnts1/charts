@@ -6,7 +6,6 @@ ingress:
   domain: cvnts1.lakis.eu
   annotations:
     kubernetes.io/ingress.class: traefik
-    traefik.ingress.kubernetes.io/router.middlewares: traefik-https-only@kubernetescrd
     traefik.ingress.kubernetes.io/router.tls: "true"
 certificate:
   issuerRef:
